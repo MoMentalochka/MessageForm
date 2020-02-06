@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/MessageForm/static/css/main.c5e43867.chunk.css",
-    "main.js": "/MessageForm/static/js/main.3be36738.chunk.js",
-    "main.js.map": "/MessageForm/static/js/main.3be36738.chunk.js.map",
+    "main.js": "/MessageForm/static/js/main.9dd90fea.chunk.js",
+    "main.js.map": "/MessageForm/static/js/main.9dd90fea.chunk.js.map",
     "runtime-main.js": "/MessageForm/static/js/runtime-main.1c730a31.js",
     "runtime-main.js.map": "/MessageForm/static/js/runtime-main.1c730a31.js.map",
     "static/js/2.44a6b682.chunk.js": "/MessageForm/static/js/2.44a6b682.chunk.js",
     "static/js/2.44a6b682.chunk.js.map": "/MessageForm/static/js/2.44a6b682.chunk.js.map",
     "index.html": "/MessageForm/index.html",
-    "precache-manifest.b139b121abe3444c622e4cad28758c49.js": "/MessageForm/precache-manifest.b139b121abe3444c622e4cad28758c49.js",
+    "precache-manifest.aafdcf77061e0014209f011f17268678.js": "/MessageForm/precache-manifest.aafdcf77061e0014209f011f17268678.js",
     "service-worker.js": "/MessageForm/service-worker.js",
     "static/css/main.c5e43867.chunk.css.map": "/MessageForm/static/css/main.c5e43867.chunk.css.map",
     "static/js/2.44a6b682.chunk.js.LICENSE": "/MessageForm/static/js/2.44a6b682.chunk.js.LICENSE",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.1c730a31.js",
     "static/js/2.44a6b682.chunk.js",
     "static/css/main.c5e43867.chunk.css",
-    "static/js/main.3be36738.chunk.js"
+    "static/js/main.9dd90fea.chunk.js"
   ]
 }
