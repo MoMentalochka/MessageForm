@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import FormPage from './components/FormPage/FormPage';
-import { MessageApi } from './DAL/MessageApi';
-
+import { MessageApi } from './Api/MessageApi';
 
 
 
 class App extends React.Component {
 
+  // ==== Подгружаем инициализационные данные ====
   componentWillMount() {
     localStorage.getItem('state')
       ? this.setState({
@@ -22,57 +22,61 @@ class App extends React.Component {
 
     localStorage.setItem('state', JSON.stringify({ ...nextState }))
   }
-  componentDidMount() {
 
-  }
-
-
+  // Отправка формы 
   SendMessage = (data) => {
+    //==== Формируем время отправки сообщения ====
     let monthList = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря']
     let month = monthList[new Date().getMonth()];
     let day = new Date().getDate();
     data.date = day + ' ' + month;
-
+    //==== Добавляем поле время объекту с сообщением ====
     this.setState({
       messageData: [...this.state.messageData, { ...data }],
-      fileData: [],
     })
+    let files =  this.state.fileData
+    //Отправка сообщения 
+    MessageApi.SendMessage(data,files)
+      .then((res) => {
+        let check = setInterval((res) => {
+          //==== ожидание завершения отправки ====
+          MessageApi.Track(res['track.id'])
+            .then((res) => {
+             
+              //==== при успешной отправке ====
+              if (res.obj.status === '-1') {
+                clearTimeout(check)
+                let last = this.state.messageData.pop()
+                last.status = 'Отправлено'
+                this.setState({
+                  messageData: [...this.state.messageData, { ...last }],
+                  fileData: [],
+                })
+              }
+              //=== при ошибке ===
+              else if (res.obj.status === '-2') {
+                clearTimeout(check)
+                let last = this.state.messageData.pop()
+                last.status = 'Ошибка'
+                this.setState({
+                  messageData: [...this.state.messageData, { ...last }],
+                  fileData: [],
+                })
+              }
 
-    MessageApi.SendMessage(data,)
-    .then( (res) =>{
-      let check = setInterval((res)=>{
-        MessageApi.Track(res['track.id'])
-        .then((res) => {
-          console.log(res.obj.status)
-          if (res.obj.status === '-1') {
-            clearTimeout(check)
-            console.log('Отправлено')
-            let last = this.state.messageData.pop()
-            last.status = 'Отправлено'
-            this.setState({
-              messageData: [...this.state.messageData, { ...last }],
-            })}
-            else  if (res.obj.status === '-2') {
-              clearTimeout(check)
-              console.log('Ошибка')
-              let last = this.state.messageData.pop()
-              last.status = 'Ошибка'
-              this.setState({
-                messageData: [...this.state.messageData, { ...last }],
-              })}
-           
-        });
-      }, 1000,res,this.state)}
-    )
-   
+            });
+        }, 1000, res, this.state)
+      }
+      )
+
   };
-
+  // Загрузка выбранных файлов
   UpdateFiles = (data) => {
     this.setState({
       fileData: data,
     })
   };
-
+  //Удаление файла из списка выбраннных
   DeleteFile = (index) => {
     let copyFileData = [...this.state.fileData]
     copyFileData.splice(index, 1)
@@ -80,6 +84,7 @@ class App extends React.Component {
       fileData: copyFileData
     })
   };
+  //Очистка localstorage
   ClearHistory = () => {
     localStorage.removeItem('state')
     setTimeout(() => {
@@ -88,6 +93,7 @@ class App extends React.Component {
       })
     }, 300);
   };
+
   render() {
     return (
       <FormPage UpdateFiles={this.UpdateFiles} state={this.state} DeleteFile={this.DeleteFile} Validate={this.Validate} SendMessage={this.SendMessage} ClearHistory={this.ClearHistory} />

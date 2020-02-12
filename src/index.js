@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './css/bootstrap.css';
-import './css/font-awesome-4.7.0/css/font-awesome.css';
+import './Css/bootstrap.css';
+import './Css/font-awesome-4.7.0/css/font-awesome.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
