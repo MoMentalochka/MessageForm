@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/MessageForm/static/css/main.c5e43867.chunk.css",
-    "main.js": "/MessageForm/static/js/main.5463a817.chunk.js",
-    "main.js.map": "/MessageForm/static/js/main.5463a817.chunk.js.map",
+    "main.js": "/MessageForm/static/js/main.0e14a5ae.chunk.js",
+    "main.js.map": "/MessageForm/static/js/main.0e14a5ae.chunk.js.map",
     "runtime-main.js": "/MessageForm/static/js/runtime-main.1c730a31.js",
     "runtime-main.js.map": "/MessageForm/static/js/runtime-main.1c730a31.js.map",
-    "static/js/2.44a6b682.chunk.js": "/MessageForm/static/js/2.44a6b682.chunk.js",
-    "static/js/2.44a6b682.chunk.js.map": "/MessageForm/static/js/2.44a6b682.chunk.js.map",
+    "static/js/2.e3288942.chunk.js": "/MessageForm/static/js/2.e3288942.chunk.js",
+    "static/js/2.e3288942.chunk.js.map": "/MessageForm/static/js/2.e3288942.chunk.js.map",
     "index.html": "/MessageForm/index.html",
-    "precache-manifest.6c244913bb3aba92480e39d507c76008.js": "/MessageForm/precache-manifest.6c244913bb3aba92480e39d507c76008.js",
+    "precache-manifest.d6407d9f1046e812b4b262589668a842.js": "/MessageForm/precache-manifest.d6407d9f1046e812b4b262589668a842.js",
     "service-worker.js": "/MessageForm/service-worker.js",
     "static/css/main.c5e43867.chunk.css.map": "/MessageForm/static/css/main.c5e43867.chunk.css.map",
-    "static/js/2.44a6b682.chunk.js.LICENSE": "/MessageForm/static/js/2.44a6b682.chunk.js.LICENSE",
+    "static/js/2.e3288942.chunk.js.LICENSE": "/MessageForm/static/js/2.e3288942.chunk.js.LICENSE",
     "static/media/font-awesome.css": "/MessageForm/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.1c730a31.js",
-    "static/js/2.44a6b682.chunk.js",
+    "static/js/2.e3288942.chunk.js",
     "static/css/main.c5e43867.chunk.css",
-    "static/js/main.5463a817.chunk.js"
+    "static/js/main.0e14a5ae.chunk.js"
   ]
 }
