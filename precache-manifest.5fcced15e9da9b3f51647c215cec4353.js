@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0ca763a256ec87b5178dda23b1b7a048",
+    "revision": "f45941b98f5631b442f60d2cdc440891",
     "url": "/MessageForm/index.html"
   },
   {
-    "revision": "5139285e6ceb32df47b1",
-    "url": "/MessageForm/static/css/main.c5e43867.chunk.css"
+    "revision": "72185a92c633151e5fad",
+    "url": "/MessageForm/static/css/main.0b51c166.chunk.css"
   },
   {
     "revision": "dff2901470fe9f5f376a",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MessageForm/static/js/2.e3288942.chunk.js.LICENSE"
   },
   {
-    "revision": "5139285e6ceb32df47b1",
-    "url": "/MessageForm/static/js/main.0e14a5ae.chunk.js"
+    "revision": "72185a92c633151e5fad",
+    "url": "/MessageForm/static/js/main.36898a66.chunk.js"
   },
   {
     "revision": "84b57dfbe45ca4161a8d",
