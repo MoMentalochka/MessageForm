@@ -18,7 +18,7 @@
     margin-top:5px;
 }
 .col{
- padding: 0 !important;
+    padding: 0 !important;
 }
 .form_file input{
     visibility: hidden;
@@ -51,6 +51,6 @@
 }
 .btn:disabled {
     background: linear-gradient(0deg, #C4C4C4, #C4C4C4), linear-gradient(180deg, #45A6FF 0%, #0055FB 100%);
-border-radius: 5px;
-cursor: no-drop;
+    border-radius: 5px;
+    cursor: no-drop;
 }

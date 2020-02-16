@@ -7,7 +7,7 @@ import { MessageApi } from './Api/MessageApi';
 
 class App extends React.Component {
 
-  // ==== Подгружаем инициализационные данные ====
+  // ==== Подгружаем инициализационные данные(если есть) ====
   componentWillMount() {
     localStorage.getItem('state')
       ? this.setState({
@@ -30,19 +30,24 @@ class App extends React.Component {
     let month = monthList[new Date().getMonth()];
     let day = new Date().getDate();
     data.date = day + ' ' + month;
+
     //==== Добавляем поле время объекту с сообщением ====
     this.setState({
       messageData: [...this.state.messageData, { ...data }],
     })
-    let files =  this.state.fileData
-    //Отправка сообщения 
-    MessageApi.SendMessage(data,files)
+
+
+
+    //==== Отправка сообщения ====
+    let files = this.state.fileData
+
+    MessageApi.SendMessage(data, files)
       .then((res) => {
         let check = setInterval((res) => {
           //==== ожидание завершения отправки ====
           MessageApi.Track(res['track.id'])
             .then((res) => {
-             
+
               //==== при успешной отправке ====
               if (res.obj.status === '-1') {
                 clearTimeout(check)
@@ -53,7 +58,7 @@ class App extends React.Component {
                   fileData: [],
                 })
               }
-              //=== при ошибке ===
+              //==== при ошибке ====
               else if (res.obj.status === '-2') {
                 clearTimeout(check)
                 let last = this.state.messageData.pop()
@@ -66,17 +71,17 @@ class App extends React.Component {
 
             });
         }, 1000, res, this.state)
-      }
-      )
-
+      })
   };
-  // Загрузка выбранных файлов
+
+  //==== Загрузка выбранных файлов ====
   UpdateFiles = (data) => {
     this.setState({
       fileData: data,
     })
   };
-  //Удаление файла из списка выбраннных
+
+  //==== Удаление файла из списка выбраннных ====
   DeleteFile = (index) => {
     let copyFileData = [...this.state.fileData]
     copyFileData.splice(index, 1)
@@ -84,7 +89,8 @@ class App extends React.Component {
       fileData: copyFileData
     })
   };
-  //Очистка localstorage
+
+  // ==== Очистка localstorage ==== 
   ClearHistory = () => {
     localStorage.removeItem('state')
     setTimeout(() => {

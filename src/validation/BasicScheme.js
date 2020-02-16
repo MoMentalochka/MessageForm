@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-
+//==== Правила для валидации ====
 const BasicFormSchema = Yup.object().shape({
     for_name: Yup.string()
     .min(2, "Минимум 2 символа*")
