@@ -54,3 +54,23 @@
     border-radius: 5px;
     cursor: no-drop;
 }
+.DragDrop{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(67, 187, 81, 0.1);
+}
+.DragDrop{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    z-index: 1000;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    outline-offset:-9px;
+    outline:1px dashed #ccc;
+}

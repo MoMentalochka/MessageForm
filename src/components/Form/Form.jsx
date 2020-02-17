@@ -3,7 +3,9 @@ import styles from "./Form.module.css"
 import File from '../File/File'
 import { Formik, Field, Form } from "formik";
 import BasicFormSchema from "../../validation/BasicScheme";
-
+import TargetBox from './../../DragDrop/DragDrop';
+import { DndProvider } from 'react-dnd';
+import Backend from 'react-dnd-html5-backend'
 
 const MessageForm = (props) => {
     // ===== Мониторинг полей формы ========
@@ -39,10 +41,11 @@ const MessageForm = (props) => {
         return FilesData;
     }
 
-
-
-
     return (
+        <>
+            <DndProvider backend={Backend}>
+                <TargetBox  UpdateFiles = {props.UpdateFiles}/>
+            </DndProvider>
         <Formik
             //инициализируем значения input-ов
             initialValues={{
@@ -154,6 +157,7 @@ const MessageForm = (props) => {
             )}
 
         />
+        </>
     )
 }
 

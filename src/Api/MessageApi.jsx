@@ -20,8 +20,9 @@ export const MessageApi = {
   },
   //==== Отправка сообщения ====
   SendMessage(data, files) {
+  
     //==== Создаём пакет файлов ====
-    files = files.map(e => e = { 'name': `${e.name}`, 'content': `${e.content}`, 'encoding': 'base64' })
+    files = files.map(e => e = { 'name': `${e.name}`, 'content': `${e.content}`, 'encoding': `${e.encoding}` })
     return (
       sendsay.request({
 

@@ -2,15 +2,15 @@ import React from 'react'
 import styles from "../FormPage/FormPage.module.css"
 import Form from '../Form/Form'
 import MessagePage from '../MessagePage/MessagePage';
-
 const FormPage = (props) => {
     let Sending = !props.state.messageData.some(i => i.status === 'В очереди')
-
+    
     return (
         <div className={styles.container}>
             {Sending
 
                 ? <div className={styles.form}>
+                
                     <Form {...props} />
                 </div>
 
