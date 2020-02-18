@@ -2,8 +2,10 @@ import React from 'react'
 import styles from './File.module.css'
 
 const FormFile = (props) => {
+
     //==== Формируем модули для оттображения файлов ====
     let blok = props.fileData.map((b, index) =>
+        (!b.error)?
 
         <div className={styles.blok} key={index}>
             <div className={styles.file}>
@@ -16,6 +18,10 @@ const FormFile = (props) => {
                 <span onClick={() => props.DeleteFile(index)} >Удалить </span>
             </div>
         </div>
+        :
+            <div className={"alert alert-danger"} role="alert" key={index} >
+                 Файл : {b.name}  не будет отправлен, {b.error}
+            </div>
 
     )
 

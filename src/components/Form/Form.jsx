@@ -2,50 +2,50 @@ import React from 'react'
 import styles from "./Form.module.css"
 import File from '../File/File'
 import { Formik, Field, Form } from "formik";
-import BasicFormSchema from "../../validation/BasicScheme";
-import TargetBox from './../../DragDrop/DragDrop';
+import BasicFormSchema from "../../Validation/BasicScheme";
+import TargetBox from '../DragDrop/DragDrop';
 import { DndProvider } from 'react-dnd';
 import Backend from 'react-dnd-html5-backend'
 
 const MessageForm = (props) => {
-    // ===== Мониторинг полей формы ========
-    let FileUpdate = async () => {
-        let Data = []
-        let Files = document.getElementById('file').files
-        for (let i = 0; i < Files.length; i++) {
-            Data.push({name : document.getElementById('file').files[i].name})
-        }
-        let d = await CatchFile(Files)
-        props.UpdateFiles(d)     
-    }
+    //==== ввод файлов через input[file]
+    // // ===== Мониторинг полей формы ========
+    // let FileUpdate = async () => {
+    //     let Data = []
+    //     let Files = document.getElementById('file').files
+    //     for (let i = 0; i < Files.length; i++) {
+    //         Data.push({name : document.getElementById('file').files[i].name})
+    //     }
+    //     let d = await CatchFile(Files)
+    //     props.UpdateFiles(d)     
+    // // }
   
-    async function CatchFile(Files) {
+    // async function CatchFile(Files) {
         
-        const FilesData =[]
-        for (let i = 0; i < Files.length; i++) {
-            let res = await new Promise((resolve, reject) => {
-                let reader = new FileReader()
-                reader.onload = function () {
-                    resolve(reader.result.split(',')[1])
-                    
-                };
-                reader.readAsDataURL(Files[i]);   
-            })
-            FilesData[i] = {
-                name: Files[i].name,
-                content: res,
-                encoding: "base64"
-            }
+    //     const FilesData =[]
+    //     for (let i = 0; i < Files.length; i++) {
+    //         let res = await new Promise((resolve, reject) => {
+    //             let reader = new FileReader()
+    //             reader.onload = function () {
+    //                 resolve(reader.result.split(',')[1])
+    //             };
+    //             reader.readAsDataURL(Files[i]);   
+    //         })
+    //         FilesData[i] = {
+    //             name: Files[i].name,
+    //             content: res,
+    //             encoding: "base64"
+    //         }
            
-        }
-        return FilesData;
-    }
+    //     }
+    //     return FilesData;
+    // }
 
     return (
-        <>
+        <> {props.state.UploadFiles &&
             <DndProvider backend={Backend}>
-                <TargetBox  UpdateFiles = {props.UpdateFiles}/>
-            </DndProvider>
+                <TargetBox  UpdateFiles = {props.UpdateFiles} UploadFilesToggler = {props.UploadFilesToggler}/>
+            </DndProvider>}
         <Formik
             //инициализируем значения input-ов
             initialValues={{
@@ -139,17 +139,21 @@ const MessageForm = (props) => {
 
                     <File fileData={props.state.fileData} DeleteFile={props.DeleteFile} />
 
-                    <div className={styles.form_file}>
+                    {/* <div className={styles.form_file}>
                         <label htmlFor="file"><i className={styles.fa + " fa fa-paperclip"} aria-hidden="true"></i> Прикрепить файл</label>
                         <Field type="file" id="file" name="files" multiple onChange={FileUpdate} />
+                    </div> */}
+
+                    <div className={styles.form_file} onClick={()=>{props.UploadFilesToggler(true)}}>
+                        <div className={styles.form_file_label}><i className={styles.fa + " fa fa-paperclip"} aria-hidden="true"></i> Прикрепить файл</div>
                     </div>
 
 
                     <div className={styles.form_blok10}>
                         <button type="submit" className={styles.btn + " btn btn-primary"} disabled={!isValid}>Отправить</button>
 
-
-                    </div>
+                        
+                    </div>  
 
 
                 </Form>

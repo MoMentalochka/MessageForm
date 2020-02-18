@@ -1,4 +1,4 @@
-import * as Yup from "yup";
+import * as Yup from "../../node_modules/yup";
 //==== Правила для валидации ====
 const BasicFormSchema = Yup.object().shape({
     for_name: Yup.string()

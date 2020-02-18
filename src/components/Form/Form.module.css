@@ -23,13 +23,22 @@
 .form_file input{
     visibility: hidden;
 }
-.form_file label{
+/* .form_file label{
     color: rgb(0, 85, 251);
 }
 .form_file label:hover{
     cursor: pointer;
     color:rgb(0, 85, 251,0.8);
 }
+ */
+.form_file_label{
+    color: rgb(0, 85, 251);
+}
+.form_file_label:hover{
+    cursor: pointer;
+    color:rgb(0, 85, 251,0.8);
+}
+
 .btn{
     outline: none;
     border: none;

@@ -41,3 +41,6 @@
 .delete .fa{
     margin-right: 6px;
 }
+.error{
+    border: #FF6666;
+}

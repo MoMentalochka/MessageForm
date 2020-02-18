@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "../FormPage/FormPage.module.css"
+import styles from "./FormPage.module.css"
 import Form from '../Form/Form'
 import MessagePage from '../MessagePage/MessagePage';
 const FormPage = (props) => {

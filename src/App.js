@@ -11,11 +11,14 @@ class App extends React.Component {
   componentWillMount() {
     localStorage.getItem('state')
       ? this.setState({
-        ...JSON.parse(localStorage.getItem('state'))
+        ...JSON.parse(localStorage.getItem('state')),
+        UploadFiles : false,
+        fileData: []
       })
       : this.setState({
         fileData: [],
         messageData: [],
+        UploadFiles : false
       })
   }
   componentWillUpdate(nextProps, nextState) {
@@ -39,7 +42,7 @@ class App extends React.Component {
 
 
     //==== Отправка сообщения ====
-    let files = this.state.fileData
+    let files = this.state.fileData.filter( e => e.size < (5*1024*1024) )
 
     MessageApi.SendMessage(data, files)
       .then((res) => {
@@ -70,14 +73,16 @@ class App extends React.Component {
               }
 
             });
-        }, 1000, res, this.state)
+        }, 5000, res, this.state)
       })
   };
 
   //==== Загрузка выбранных файлов ====
   UpdateFiles = (data) => {
+    
     this.setState({
       fileData: data,
+      
     })
   };
 
@@ -100,9 +105,16 @@ class App extends React.Component {
     }, 300);
   };
 
+  UploadFilesToggler = (status) =>{
+    this.setState({
+      UploadFiles : status
+    })
+  }
+
   render() {
+    
     return (
-      <FormPage UpdateFiles={this.UpdateFiles} state={this.state} DeleteFile={this.DeleteFile} Validate={this.Validate} SendMessage={this.SendMessage} ClearHistory={this.ClearHistory} />
+      <FormPage UpdateFiles={this.UpdateFiles} state={this.state} DeleteFile={this.DeleteFile} Validate={this.Validate} SendMessage={this.SendMessage} ClearHistory={this.ClearHistory} UploadFilesToggler = {this.UploadFilesToggler} />
     )
 
   }
